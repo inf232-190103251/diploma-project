@@ -1,0 +1,63 @@
+<div th:fragment="cart">
+    <button id="cart-info" style="position: fixed; bottom: 70px; right: 70px;" class="alert alert-info border border-light rounded-pill px-5" data-bs-toggle="offcanvas" data-bs-target="#offcanvasRight" aria-controls="offcanvasRight">Cart : <span id="cart-size">0</span></button>
+
+    <div class="offcanvas offcanvas-end" tabindex="-1" id="offcanvasRight" aria-labelledby="offcanvasRightLabel">
+        <div class="offcanvas-header">
+            <h5 id="offcanvasRightLabel">Cart Items</h5>
+            <button type="button" class="btn-close text-reset" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+        </div>
+        <div class="offcanvas-body">
+            <div style="background-color: #ffffff;" class="container rounded shadow">
+                <div class="row p-1">
+                    <div class="col-12">
+                        <ul id="items" class="d-grid gap-4 my-5 list-unstyled">
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="offcanvas-footer d-flex flex-row mb-2">
+            <button onclick="resetCart()" type="button" class="d-none btn btn-lg btn-link fs-6 text-decoration-none col-6 m-0 rounded-0 options" >Reset</button>
+            <button id="purchase-holder" onclick="buy()" data-bs-dismiss="modal" sec:authorize="hasRole('ROLE_USER')" type="button" class="d-none btn btn-lg btn-primary fs-6 text-decoration-none col-6 m-0 rounded-0 border-right options" >Purchase:<strong id="purchase">0</strong> tg</button>
+        </div>
+    </div>
+
+<!--    <div class="modal fade" id="cart" aria-labelledby="cart-label" aria-hidden="true">-->
+<!--        <div class="modal-dialog model-dialog-scrollable">-->
+<!--            <div class="modal-content rounded-3 ">-->
+<!--                <div class="modal-header">-->
+<!--                    <h5 class="modal-title" id="cart-label">Cart Items</h5>-->
+<!--                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>-->
+<!--                </div>-->
+<!--                <div class="modal-body">-->
+<!--                    <div style="background-color: #ffffff;" class="container rounded shadow">-->
+<!--                        <div class="row p-1">-->
+<!--&lt;!&ndash;                            <div class="col-12">&ndash;&gt;-->
+<!--&lt;!&ndash;                                <ul id="items" class="d-grid gap-4 my-5 list-unstyled">&ndash;&gt;-->
+<!--&lt;!&ndash;                                </ul>&ndash;&gt;-->
+<!--&lt;!&ndash;                            </div>&ndash;&gt;-->
+<!--                        </div>-->
+<!--                    </div>-->
+<!--                </div>-->
+<!--                <div class="modal-footer flex-nowrap p-1">-->
+<!--&lt;!&ndash;                    <button onclick="resetCart()" type="button" class="d-none btn btn-lg btn-link fs-6 text-decoration-none col-6 m-0 rounded-0 options" >Reset</button>&ndash;&gt;-->
+<!--&lt;!&ndash;                    <button id="purchase-holder" onclick="buy()" data-bs-dismiss="modal" sec:authorize="hasRole('ROLE_USER')" type="button" class="d-none btn btn-lg btn-primary fs-6 text-decoration-none col-6 m-0 rounded-0 border-right options" >Purchase:<strong id="purchase">0</strong> tg</button>&ndash;&gt;-->
+<!--                </div>-->
+<!--            </div>-->
+<!--        </div>-->
+<!--    </div>-->
+    <div class="container" id="layer"
+         style="position: fixed;top: 50%;left: 50%;transform: translate(-50%, -50%);z-index: 100">
+        <div class="row">
+            <div class="col-4 col-sm-3 col-xs-1"></div>
+            <div id="ajaxreader" class="col-4 col-sm-6 col-xs-10 text-center d-none" role="alert" style="opacity: 1;">
+                <p id="message"></p>
+                <button style="align-content: end" onclick="action2()" type="button" class="btn-close" data-dismiss="alert"
+                        aria-label="Close">
+                </button>
+            </div>
+            <div class="col-4 col-sm-3 col-xs-1"></div>
+
+        </div>
+    </div>
+</div>

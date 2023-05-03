@@ -1,0 +1,20 @@
+@relation food
+
+@attribute foodName string
+@attribute foodQuantity numeric
+@attribute averageCookingTime numeric
+@attribute averageFoodPerCook numeric
+@attribute preparationTime numeric
+
+Burger,1,300,3,300
+Burger,2,350,1.5,350
+Burger,2,350,0.67,400
+Burger,3,360,0.5,450
+
+Pizza,1,600,3,600
+Pizza,2,800,1.5,600
+Pizza,3,900,1,900
+Pizza,3,900,3,600
+
+
+

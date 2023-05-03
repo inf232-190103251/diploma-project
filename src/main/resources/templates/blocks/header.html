@@ -1,0 +1,76 @@
+<nav th:fragment="header" class="sticky-top navbar navbar-expand-md navbar-light shadow rounded-3"
+     style="background-color: #ffffff;" aria-label="Fourth navbar example">
+    <div class="container">
+        <a href="/">
+            <img class="rounded-3" src="/oso-logo.png" alt="Logo"
+                 style="width: 162px;height: 92px;">
+        </a>
+        <button class="navbar-toggler position-relative"  type="button" data-bs-toggle="collapse"
+                data-bs-target="#navbarsExample04"
+                aria-controls="navbarsExample04" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon" style="  background-image: url('https://uploads-ssl.webflow.com/5ee0f77d1d046628413ee86d/5fde5aabe66c0854a063742a_Orange%20Menu%20Icon.png')"></span>
+
+            <span id="catalog-size-badge"
+                  class="position-absolute top-0 start-100 translate-middle badge rounded-pill orange">
+    0
+    <span class="visually-hidden">unread messages</span>
+  </span>
+        </button>
+
+        <div class="collapse navbar-collapse" id="navbarsExample04">
+            <!--            <form>-->
+            <!--                <input class="form-control" type="text" placeholder="Search" aria-label="Search">-->
+            <!--            </form>-->
+            <ul class="navbar-nav ms-auto mb-2 mb-md-0">
+                <li class="nav-item mx-auto">
+                    <a class="nav-link p-2 text-dark" href="/catalog">Catalog<span
+                            sec:authorize="isAnonymous() || hasRole('ROLE_USER')" id="catalog-size"
+                            class="badge bg-dark">0</span></a>
+                </li>
+                <li class="nav-item mx-auto">
+                    <a class="nav-link p-2 text-dark" href="/orders" sec:authorize="hasRole('ROLE_USER')">My History</a>
+                </li>
+                <li class="nav-item mx-auto">
+                    <a class="nav-link p-2 text-dark" href="/profile" sec:authorize="isAuthenticated()">My Profile</a>
+                </li>
+                <!--                <li class="nav-item mx-1">-->
+                <!--                    <a class="nav-link p-2 text-danger" href="/about">About</a>-->
+                <!--                </li>-->
+
+                <li class="nav-item dropdown mx-1">
+                    <a sec:authorize="hasAnyRole('ROLE_ADMIN','ROLE_COOK','ROLE_WAITER')"
+                       class="nav-link dropdown-toggle" href="#" id="dropdown04" data-bs-toggle="dropdown"
+                       aria-expanded="false">Actions</a>
+                    <ul class="dropdown-menu" aria-labelledby="dropdown04">
+                        <li>
+                            <a class=" dropdown-item p-2 text-dark" href="/users"
+                               sec:authorize="hasRole('ROLE_ADMIN')">Users</a>
+                        </li>
+                        <li>
+                            <a class=" dropdown-item p-2 text-dark" href="/users/add"
+                               sec:authorize="hasRole('ROLE_ADMIN')">Add User</a>
+                        </li>
+                        <li>
+                            <a class="dropdown-item p-2 text-dark" href="/indent/general"
+                               sec:authorize="hasRole('ROLE_COOK')">My Job</a>
+                        </li>
+                        <li>
+                            <a class="dropdown-item p-2 text-dark" href="/table/track"
+                               sec:authorize="hasRole('ROLE_WAITER')">My Job</a>
+                        </li>
+                    </ul>
+                </li>
+                <li class="nav-item mx-auto">
+                    <!--                    <a class="btn btn-outline-dark" href="/verify">Sign in</a>-->
+                    <button type="button" class="btn btn-primary" sec:authorize="isAnonymous()" data-bs-toggle="modal"
+                            data-bs-target="#exampleModal">
+                        Sign in
+                    </button>
+                    <a class="btn btn-outline-dark" href="/logout" sec:authorize="isAuthenticated()">Sign out</a>
+                </li>
+            </ul>
+
+        </div>
+    </div>
+
+</nav>

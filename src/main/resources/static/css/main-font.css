@@ -1,0 +1,27 @@
+body {
+    font-family: "Kanit", sans-serif;
+    font-weight: bold;
+}
+
+.rounded-6 {
+    border-radius: 1rem;
+}
+
+.orange {
+    background-color: #f58b35;
+}
+
+
+.marble {
+    background-color: #2ec5d3;
+}
+
+.hover-info {
+    transition: color 0.3s ease-out;
+    transition: color 0.3s ease-in;
+
+}
+
+.hover-info:hover {
+    color: #2ec5d3;
+}

@@ -1,0 +1,106 @@
+<div class="container" th:fragment="profile">
+    <div class="page-inner no-page-title shadow-sm">
+        <div id="main-wrapper">
+            <div class="row">
+                <div class="col-lg-5 col-xl-3 shadow-sm">
+                    <div class="card card-white grid-margin">
+                        <div class="card-heading clearfix">
+                            <h4 class="card-title">User Profile</h4>
+                        </div>
+                        <div class="card-body user-profile-card mb-3">
+                            <h4 th:text="${authuser}" class="text-center h6 mt-2"/>
+                            <p th:text="${role}" class="text-center small"/>
+                        </div>
+                        <hr/>
+                        <div class="card-heading clearfix mt-3">
+                            <h4 class="card-title">Promotion 📣</h4>
+                        </div>
+                        <div class="card-body mb-3">
+                            <p class="mb-0">
+                                If the total price more than <span class="text text-success">3000KZT</span>
+                            </p>
+                            <p> Discount would be 10%</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-7 col-xl-6 shadow-sm">
+                    <div class="profile-timeline">
+                        <ul class="list-unstyled">
+                            <li class="timeline-item">
+                            </li>
+                            <li class="timeline-item">
+                                <div class="card card-white grid-margin">
+                                    <div class="card-body">
+                                        <div class="timeline-item-header">
+                                            <h3>Statistics 📊</h3>
+                                        </div>
+                                        <div class="p-2"><p>Total</p>
+                                            <h3 th:text="${statistics.getCount()}+' orders'"/></div>
+                                        <div th:if="${statistics.getCount()>0}" class="timeline-item-post text-center ">
+                                            <div class="p-2">
+                                                <p>Average</p>
+                                                <div class="progress">
+                                                    <div class="progress-bar bg-info" role="progressbar"
+                                                         th:style="'width:'+${#numbers.formatInteger(statistics.getAverage()/statistics.getSum()*100,1)}+'%;'"
+                                                         th:aria-valuenow="${#numbers.formatInteger(statistics.getAverage()/statistics.getSum()*100,1)}"
+                                                         aria-valuemin="0" aria-valuemax="100"></div>
+                                                </div>
+                                                <b th:text="${#numbers.formatDecimal(statistics.getAverage(),0,0)}+' ₸ '"/>
+
+                                            </div>
+
+                                            <div class="p-2"><p>Minimum</p>
+                                                <div class="progress">
+                                                    <div class="progress-bar bg-info" role="progressbar"
+                                                         th:style="'width:'+${#numbers.formatInteger(statistics.getMin()/statistics.getSum()*100,1)}+'%;'"
+                                                         th:aria-valuenow="${#numbers.formatInteger(statistics.getMin()/statistics.getSum()*100,1)}"
+                                                         aria-valuemin="0" aria-valuemax="100"></div>
+                                                </div>
+                                                <b th:text="${statistics.getMin()}+' ₸'"/></div>
+                                            <div class="p-2"><p>Maximum</p>
+                                                <div class="progress">
+                                                    <div class="progress-bar bg-info" role="progressbar"
+                                                         th:style="'width:'+${#numbers.formatInteger(statistics.getMax()/statistics.getSum()*100,1)}+'%;'"
+                                                         th:aria-valuenow="${#numbers.formatInteger(statistics.getMax()/statistics.getSum()*100,1)}"
+                                                         aria-valuemin="0" aria-valuemax="100"></div>
+                                                </div>
+                                                <b th:text="${statistics.getMax()}+' ₸'"/></div>
+                                            <div class="p-2">
+                                                <p>Sum</p>
+                                                <div class="progress">
+                                                    <div class="progress-bar bg-info w-100" role="progressbar"
+                                                         aria-valuenow="100"
+                                                         aria-valuemin="0" aria-valuemax="100"></div>
+                                                </div>
+                                                <b th:text="${statistics.getSum()}+' ₸'"/>
+                                            </div>
+                                        </div>
+                                        <div th:if="${statistics.getCount()==0}"
+                                             class="timeline-item-post text-center ">
+                                            <p class="text text-info">Statistics will be available after you pay
+                                                orders</p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="col-lg-12 col-xl-3 shadow-sm">
+                    <div class="card card-white grid-margin">
+                        <div class="card-heading clearfix">
+                            <h4 class="card-title">Some Info</h4>
+                        </div>
+                        <div class="card-body">
+                            <p>Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque
+                                laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis
+                                architecto.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- Row -->
+        </div>
+
+    </div>
+</div>

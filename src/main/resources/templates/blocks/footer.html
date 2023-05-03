@@ -1,0 +1,158 @@
+<footer id="footer" class="p-4 mt-md-5 pt-md-5 border-top p text-light rounded-3" th:fragment="footer"
+        style="background-color: #f58b35">
+    <div class="container">
+        <div class="row">
+            <div class=" my-2 col-12 col-md">
+                <div class="d-flex flex-row">
+                    <img src="https://lf.kz/kk/assets/icon/halal.svg" alt="QMDB"
+                         style="width: 60px;height: 60px;margin-right: 10px">
+                    <small class="d-block mb-3 text-light">© 2021-2023</small>
+                </div>
+
+            </div>
+            <div class="col-12 col-sm-6 col-md-3">
+                <h5>Features</h5>
+                <ul class="container list-unstyled text-small">
+                    <li><a class="text-light" href="#">Cool stuff</a></li>
+                    <li><a class="text-light" href="#">Random feature</a></li>
+                    <li><a class="text-light" href="#">Team feature</a></li>
+                    <li><a class="text-light" href="#">Stuff for developers</a></li>
+                    <li><a class="text-light" href="#">Another one</a></li>
+                    <li><a class="text-light" href="#">Last time</a></li>
+                </ul>
+            </div>
+            <div class="col-12 col-sm-6 col-md-3">
+                <h5>Resources</h5>
+                <ul class="container list-unstyled text-small">
+                    <li><a class="text-light" href="#">Resource</a></li>
+                    <li><a class="text-light" href="#">Resource name</a></li>
+                    <li><a class="text-light" href="#">Another resource</a></li>
+                    <li><a class="text-light" href="#">Final resource</a></li>
+                </ul>
+            </div>
+            <div class="col-12 col-sm-12 col-md-3">
+                <h5>About</h5>
+                <ul class=" container list-unstyled text-small">
+                    <li><a class="text-light" href="#">Team</a></li>
+                    <li><a class="text-light" href="#">Locations</a></li>
+                    <li><a class="text-light" href="#">Privacy</a></li>
+                    <li><a class="text-light" href="#">Terms</a></li>
+                </ul>
+            </div>
+        </div>
+    </div>
+    <div class="modal fade text-dark" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel"
+         aria-hidden="true">
+        <div class="modal-dialog ">
+            <div class="modal-content rounded-6" >
+                <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLabel">Log in</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <div class="container text-center my-3">
+                            <div class="container-fluid">
+                                <div class="text-center mb-4">
+                                    <img class="mb-4" src="/oso-logo.png" alt="Logo"
+                                         width="162"
+                                         height="92">
+                                    <h1 class="h3 mb-3 font-weight-normal">Please login</h1>
+
+                                </div>
+                                <div th:if="${param.error}" class="alert alert-dark">
+                                    Invalid phoneNumber or code.
+                                </div>
+
+                                <div th:if="${param.logout}" class="alert alert-warning">
+                                    You have been logged out.
+                                </div>
+                                <div class="form-label-group">
+                                    <input type="tel" id="inputTel" class="form-control rounded-6" placeholder="ex. +77777812356"
+                                           autocomplete="on" onkeypress="return isNumber(event)">
+                                    <label for="inputTel">Phone Number</label>
+                                </div>
+                                <div class="d-grid gap-2 mx-auto ">
+                                    <button class="btn btn-lg btn-outline-dark btn-block rounded-6" onclick="sendPhoneNumber()">
+                                        Send me code
+                                    </button>
+                                    <button id="verify-button" type="button" class="btn btn-outline-dark d-none rounded-6" data-bs-toggle="modal"
+                                            data-bs-target="#exampleModal1">
+                                        Verify
+                                    </button>
+                                    <a class="mt-3" href="/login">I am stuff</a>
+                                </div>
+                            </div>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="modal fade text-dark" id="exampleModal1" tabindex="-1" aria-labelledby="exampleModalLabel1"
+         aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content rounded-6">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLabel1">Code</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal"
+                            aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <form>
+                        <div class="form-group text-center">
+                            <label for="pincode" class="col-form-label">It should be 4
+                                digits</label>
+                            <input size="4" type="number" class="form-control rounded-6" id="pincode"
+                                   maxlength="4"
+                                   style="text-align: center;"
+                                   autofocus="true" autocomplete="off"/>
+                        </div>
+                    </form>
+                    <form id="forLogin" name="f" action="/login" method="post">
+                        <fieldset>
+                            <!-- Thymeleaf + Spring Security error display -->
+                            <!-- Login Controls -->
+                            <div class="d-none form-group">
+                                <label for="txtUsername">Username</label>
+                                <input type="text" class="form-control" id="txtUsername"
+                                       name="txtUsername"
+                                       placeholder="Username">
+                            </div>
+
+                            <div class="form-group d-none">
+                                <label for="txtPassword">Password</label>
+                                <input type="password" class="form-control" id="txtPassword"
+                                       name="txtPassword"
+                                       placeholder="Password">
+                            </div>
+
+                            <div class="form-check d-none">
+                                <input type="checkbox" checked class="form-check-input"
+                                       id="checkRememberMe"
+                                       name="checkRememberMe">
+                                <label class="form-check-label" for="checkRememberMe">Remember
+                                    me?</label>
+                            </div>
+
+                            <!-- Login Button -->
+                            <div class="form-actions" style="margin-top: 12px;">
+                                <button id="wait" type="submit" class="btn btn-success d-none">Log
+                                    in
+                                </button>
+                            </div>
+                        </fieldset>
+                    </form>
+                </div>
+                <div class="modal-footer d-flex justify-content-around">
+                    <a class="btn btn-secondary" data-bs-toggle="modal" href="#exampleModal" role="button">Return</a>
+                    <button type="button" class="btn btn-primary" onclick="checkThePinCode()">
+                        Check
+                    </button>
+
+                </div>
+            </div>
+        </div>
+    </div>
+    <script src="verify-page.js"></script>
+</footer>
